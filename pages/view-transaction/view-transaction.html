@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Transaction Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Date</ion-col>
+      <ion-col>{{transaction.tdate | date:"dd/MMM/yyyy 'at' h:mma" }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Amount</ion-col>
+      <ion-col>{{transaction.amount}}</ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col>Type</ion-col>
+      <ion-col>{{transaction.ttype}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Description</ion-col>
+      <ion-col>{{transaction.description}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Source</ion-col>
+      <ion-col>{{transaction.inc_title}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Expense Type</ion-col>
+      <ion-col>{{transaction.exp_title}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Paid By</ion-col>
+      <ion-col>{{transaction.po_title}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Created On</ion-col>
+      <ion-col>{{transaction.created}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button
+          ion-button
+          outline
+          block
+          (click)="onEditTransaction()">Edit Transaction</button>
+      </ion-col>
+      <ion-col>
+        <button
+          ion-button
+          outline
+          block
+          (click)="onDeleteTransaction()"
+          color="danger">Delete</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

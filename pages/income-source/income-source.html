@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="onNewIncomeSource()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      My Income Sources
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+  <ion-list>
+    <button
+      ion-item
+      *ngFor="let incomeSource of incomeSources;"
+      (click)="onLoadIncomeSource(incomeSource)">
+      <h2>{{ incomeSource.title }}</h2>
+      <ion-note>{{ incomeSource.description }}</ion-note>
+    </button>
+  </ion-list>
+  
+</ion-content>

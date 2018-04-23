@@ -1,0 +1,28 @@
+<ion-menu [content]="nav">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list>
+            <button ion-item icon-left (click)="onLoad(rootPage)">
+                <ion-icon name="podium"></ion-icon>
+                Summary
+            </button>
+            <button ion-item icon-left (click)="onLoad(incomeSourcePage)">
+                <ion-icon name="cash"></ion-icon>
+                Incomes Sources
+            </button>
+            <button ion-item icon-left (click)="onLoad(expenseTypePage)">
+                <ion-icon name="logo-usd"></ion-icon>
+                Expense Types
+            </button>
+            <button ion-item icon-left (click)="onLoad(paymentOptionPage)">
+                <ion-icon name="card"></ion-icon>
+                Payment Options
+            </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #nav></ion-nav>

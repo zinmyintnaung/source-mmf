@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Back to List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <h2>{{ incomeSource.title }}</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <p>{{ incomeSource.description }}</p>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col>
+        <button
+          ion-button
+          outline
+          block
+          (click)="onEditIncomeSource()">Edit Income Source</button>
+      </ion-col>
+      <ion-col>
+        <button
+          ion-button
+          outline
+          block
+          (click)="onDeleteIncomeSource()"
+          color="danger">Delete</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <p>To work on total amount of each income type by month and show trendings</p>
+   
+</ion-content>

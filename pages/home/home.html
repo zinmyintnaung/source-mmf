@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      Summary
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 offset-3 text-center><h2>Income: {{ incomeTotal }}</h2></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 offset-3 text-center><h2>Expense: {{ expenseTotal }}</h2></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6 offset-3 text-center><h2>Balance: {{ incomeTotal - expenseTotal }}</h2></ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

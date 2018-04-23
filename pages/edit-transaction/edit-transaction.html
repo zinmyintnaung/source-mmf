@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ mode }} Transaction</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" formControlName="curDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Type</ion-label>
+          <ion-select (ionChange)='switchControls(event)' formControlName="type">
+            <ion-option value="expense">Expense</ion-option>
+            <ion-option value="income">Income</ion-option>
+          </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Amount</ion-label>
+        <ion-input
+          type="number"
+          formControlName="amount"></ion-input>
+      </ion-item>
+
+      <section *ngIf="isExpense">
+        <ion-item *ngIf="expenseTypes.length>0">
+          <ion-label>Category</ion-label>
+          <ion-select formControlName="expenseTypeId">
+            <ion-option *ngFor="let expenseType of expenseTypes" [value]="expenseType.id">{{expenseType.title}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="paymentOptions.length>0">
+          <ion-label>Paid By</ion-label>
+          <ion-select formControlName="paymentOptionId">
+            <ion-option *ngFor="let paymentOption of paymentOptions" [value]="paymentOption.id">{{paymentOption.title}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </section>
+ 
+      <section *ngIf="isExpense && expenseTypes.length==0">
+        <p>Please add type of your expense first..</p>
+      </section>
+
+      <section *ngIf="isExpense && paymentOptions.length==0">
+        <p>Please add payment option first..</p>
+      </section>
+
+      <section *ngIf="!isExpense && incomeSources.length>0">
+        <ion-item>
+          <ion-label>Source</ion-label>
+          <ion-select formControlName="incomeSourceId">
+            <ion-option *ngFor="let incomeSource of incomeSources" [value]="incomeSource.id">{{incomeSource.title}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </section>
+ 
+      <section *ngIf="!isExpense && incomeSources.length==0">
+        <p>Please add income source first..</p>
+      </section>
+      
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea formControlName="description"></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <button
+      type="submit"
+      ion-button
+      block
+      [disabled]="!transactionForm.valid">{{ mode }} Transaction</button>
+  </form>
+
+</ion-content>
+ 
