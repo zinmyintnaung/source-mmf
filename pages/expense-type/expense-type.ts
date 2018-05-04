@@ -4,6 +4,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { ExpenseTypeService } from '../../services/expense-types';
 import { EditExpenseTypePage } from '../edit-expense-type/edit-expense-type';
 import { ViewExpenseTypePage } from '../view-expense-type/view-expense-type';
+import { SettingsService } from '../../services/settings';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class ExpenseTypePage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
-    private expenseTypeService: ExpenseTypeService) {
+    private expenseTypeService: ExpenseTypeService,
+    private settingsService: SettingsService) {
   }
 
   ionViewWillEnter(){
@@ -39,5 +41,9 @@ export class ExpenseTypePage {
 
   onLoadExpenseType(expenseType){
     this.navCtrl.push(ViewExpenseTypePage, {expenseType: expenseType});
+  }
+
+  getBackground(){
+    return this.settingsService.isAltBackground() ? 'bgListAlternative' : 'bgExpenseList';
   }
 }

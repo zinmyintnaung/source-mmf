@@ -8,6 +8,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { IncomeSourcePage } from '../pages/income-source/income-source';
 import { ExpenseTypePage } from '../pages/expense-type/expense-type';
 import { PaymentOptionPage } from '../pages/payment-option/payment-option';
+import { SettingsPage } from '../pages/settings/settings';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class MyApp {
   incomeSourcePage = IncomeSourcePage;
   expenseTypePage = ExpenseTypePage;
   paymentOptionPage = PaymentOptionPage;
+  settingsPage = SettingsPage;
   
   @ViewChild('nav') nav: NavController;
 

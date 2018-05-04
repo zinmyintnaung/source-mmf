@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,12 +36,15 @@ import { ViewPaymentOptionPage } from '../pages/view-payment-option/view-payment
 import { ListTransactionsPage } from '../pages/list-transactions/list-transactions';
 import { EditTransactionPage } from '../pages/edit-transaction/edit-transaction';
 import { ViewTransactionPage } from '../pages/view-transaction/view-transaction';
+import { SettingsService } from '../services/settings';
+
 
 @NgModule({
   declarations: [
     MyApp,
     TabsPage,
     HomePage,
+    SettingsPage,
     IncomeSourcePage,
     EditIncomeSourcePage,
     ViewIncomeSourcePage,
@@ -65,6 +69,7 @@ import { ViewTransactionPage } from '../pages/view-transaction/view-transaction'
     MyApp,
     TabsPage,
     HomePage,
+    SettingsPage,
     IncomeSourcePage,
     EditIncomeSourcePage,
     ViewIncomeSourcePage,
@@ -88,7 +93,8 @@ import { ViewTransactionPage } from '../pages/view-transaction/view-transaction'
     IncomeSourceService,
     ExpenseTypeService,
     PaymentOptionService,
-    TransactionService
+    TransactionService,
+    SettingsService,
   ]
 })
 export class AppModule {}

@@ -20,10 +20,11 @@
   <ion-list>
     <button
       ion-item
+      [color]="getBackground()"
       *ngFor="let transaction of transactions;"
       (click)="onLoadTransaction(transaction)">
       <h2>{{ transaction.tdate | date:"dd/MMM/yyyy 'at' h:mma" }}</h2>
-      <ion-note>{{ transaction.description }}</ion-note>
+      <ion-note color="primary">{{ transaction.description }}</ion-note>
     </button>
   </ion-list>
 </ion-content>

@@ -19,9 +19,13 @@
     <ion-row>
       <ion-col col-6 offset-3 text-center><h2>Expense: {{ expenseTotal }}</h2></ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col col-6 offset-3 text-center><h2>Balance: {{ incomeTotal - expenseTotal }}</h2></ion-col>
+    <ion-row *ngIf="isNegative()">
+      <ion-col col-6 offset-3 text-center><h2 style="color:#dd2323">Balance: {{ incomeTotal - expenseTotal }}</h2></ion-col>
+    </ion-row>
+    <ion-row *ngIf="!isNegative()">
+      <ion-col col-6 offset-3 text-center><h2 style="color:#0004ff">Balance: {{ incomeTotal - expenseTotal }}</h2></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+
 

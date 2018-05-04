@@ -4,6 +4,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { PaymentOptionService } from '../../services/payment-options';
 import { EditPaymentOptionPage } from '../edit-payment-option/edit-payment-option';
 import { ViewPaymentOptionPage } from '../view-payment-option/view-payment-option';
+import { SettingsService } from '../../services/settings';
 
 @Component({
   selector: 'page-payment-option',
@@ -15,6 +16,7 @@ export class PaymentOptionPage {
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
     private paymentOptionService: PaymentOptionService,
+    private settingsService: SettingsService
     ) {
   }
 
@@ -38,5 +40,9 @@ export class PaymentOptionPage {
 
   onLoadPaymentOption(paymentOption){
     this.navCtrl.push(ViewPaymentOptionPage, {paymentOption: paymentOption});
+  }
+
+  getBackground(){
+    return this.settingsService.isAltBackground() ? 'bgListAlternative' : 'bgPaymentOptionList';
   }
 }

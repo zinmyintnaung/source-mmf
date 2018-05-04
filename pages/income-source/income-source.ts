@@ -4,6 +4,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { IncomeSourceService } from '../../services/income-sources';
 import { EditIncomeSourcePage } from '../edit-income-source/edit-income-source';
 import { ViewIncomeSourcePage } from '../view-income-source/view-income-source';
+import { SettingsService } from '../../services/settings';
 
 @Component({
   selector: 'page-income-source',
@@ -16,6 +17,7 @@ export class IncomeSourcePage{
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
     private incomeSourceService: IncomeSourceService,
+    private settingsService: SettingsService
     ) {
       /*
       this.databaseProvider.getDatabaseState().subscribe(ready => {
@@ -46,5 +48,9 @@ export class IncomeSourcePage{
   onLoadIncomeSource(incomeSource){
     this.navCtrl.push(ViewIncomeSourcePage, {incomeSource: incomeSource});
   } 
+
+  getBackground(){
+    return this.settingsService.isAltBackground() ? 'bgListAlternative' : 'bgIncomeList';
+  }
 
 }

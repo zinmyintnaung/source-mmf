@@ -4,6 +4,7 @@ import { EditTransactionPage } from '../edit-transaction/edit-transaction';
 import { DatabaseProvider } from '../../providers/database/database';
 import { TransactionService } from '../../services/transactions';
 import { ViewTransactionPage } from '../view-transaction/view-transaction';
+import { SettingsService } from '../../services/settings';
 
 @Component({
   selector: 'page-list-transactions',
@@ -13,7 +14,8 @@ export class ListTransactionsPage {
   public transactions = [];
   constructor(public navCtrl: NavController, 
     private databaseProvider: DatabaseProvider,
-    private transactionService: TransactionService) {
+    private transactionService: TransactionService,
+    private settingsService: SettingsService) {
   }
 
   ionViewWillEnter(){
@@ -36,5 +38,9 @@ export class ListTransactionsPage {
 
   onLoadTransaction(transaction){
     this.navCtrl.push(ViewTransactionPage, {transaction: transaction});
+  }
+
+  getBackground(){
+    return this.settingsService.isAltBackground() ? 'bgListAlternative' : 'bgTransactionList';
   }
 }

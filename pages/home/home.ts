@@ -10,7 +10,7 @@ import { TransactionService } from '../../services/transactions';
 export class HomePage {
   public incomeTotal: any;
   public expenseTotal: any;
-  
+  public balance: any;
   constructor(public navCtrl: NavController,
     private databaseProvider: DatabaseProvider,
     private transactionService: TransactionService,
@@ -36,4 +36,11 @@ export class HomePage {
     });
   }
 
+  isNegative(){
+    this.balance = this.incomeTotal - this.expenseTotal;
+    if(this.balance > 0)
+      return false;
+    else
+      return true;
+  }
 }

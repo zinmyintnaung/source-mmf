@@ -20,10 +20,11 @@
   <ion-list>
     <button
       ion-item
+      [color]="getBackground()"
       *ngFor="let incomeSource of incomeSources;"
       (click)="onLoadIncomeSource(incomeSource)">
       <h2>{{ incomeSource.title }}</h2>
-      <ion-note>{{ incomeSource.description }}</ion-note>
+      <ion-note color="primary">{{ incomeSource.description }}</ion-note>
     </button>
   </ion-list>
   
