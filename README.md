@@ -1,5 +1,8 @@
 <h3>Source Directory</h3>
 
+<h3>Features</h3>
+<p>To track personal income and expense at your finger tips.</p>
+
 <p>Getting your icons & splash screen</p>
 <ul>
     <li>Get icon.png and splash.png from assets/extras and copy them into your resources folder.</li>
