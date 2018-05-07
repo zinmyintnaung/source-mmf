@@ -31,6 +31,7 @@ export class DatabaseProvider {
               this.databaseReady.next(true);
             } else {
               this.prepareDatabase(); //we are filling database here only if it was not filled, i.e. for first startup
+              this.populateData();
             }
           });
         });
@@ -52,6 +53,26 @@ export class DatabaseProvider {
     this.sqlitePorter.importSqlToDb(this.database, sql)
     .then(data=>{
       this.databaseReady.next(true);
+      this.storage.set('database_filled', true);
+    })
+    .catch(e => console.error(e));
+  }
+
+  populateData(){
+    let createdTime = new Date().toISOString();
+    let sql = "INSERT INTO incomesource (title, description, created) VALUES ( 'Salary', 'Montly income', '" + createdTime + "');" +
+              "INSERT INTO incomesource (title, description, created) VALUES ( 'Bonus', 'Variable income', '" + createdTime + "');" +
+              "INSERT INTO expensetype (title, description, created) VALUES ( 'Housing', 'Montly installment', '" + createdTime + "');" +
+              "INSERT INTO expensetype (title, description, created) VALUES ( 'Food & Beverage', 'Dining expense', '" + createdTime + "');" +
+              "INSERT INTO expensetype (title, description, created) VALUES ( 'Grocery', 'Buying the necessity', '" + createdTime + "');" +
+              "INSERT INTO expensetype (title, description, created) VALUES ( 'Clothing', 'Buying things to wear', '" + createdTime + "');" +
+              "INSERT INTO paymentoption (title, description, created) VALUES ( 'Cash', 'Paying cash from wallet', '" + createdTime + "');" +
+              "INSERT INTO paymentoption (title, description, created) VALUES ( 'Credit Card', 'Visa (ABC Bank)', '" + createdTime + "');";
+
+    this.sqlitePorter.importSqlToDb(this.database, sql)
+    .then(data=>{
+      this.databaseReady.next(true);
+      
       this.storage.set('database_filled', true);
     })
     .catch(e => console.error(e));
