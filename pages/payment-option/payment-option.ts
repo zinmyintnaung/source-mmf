@@ -12,6 +12,7 @@ import { SettingsService } from '../../services/settings';
 })
 export class PaymentOptionPage {
   public paymentOptions = [];
+  bgColor: any;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
@@ -24,6 +25,7 @@ export class PaymentOptionPage {
     this.databaseProvider.getDatabaseState().subscribe(ready => {
       if (ready) {
         this.loadPaymentOptions();
+        this.getBackground();
       }
     });
   }
@@ -43,6 +45,12 @@ export class PaymentOptionPage {
   }
 
   getBackground(){
-    return this.settingsService.isAltBackground() ? 'bgListAlternative' : 'bgPaymentOptionList';
+    this.settingsService.isAltBackground().then(data => {
+      if(data){
+        this.bgColor = 'bgListAlternative';
+      }else{
+        this.bgColor = 'bgPaymentOptionList';
+      }
+    })
   }
 }

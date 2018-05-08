@@ -12,7 +12,7 @@ import { SettingsService } from '../../services/settings';
 })
 export class IncomeSourcePage{
   incomeSources = [];
-   
+  bgColor: any;
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private databaseProvider: DatabaseProvider,
@@ -31,6 +31,7 @@ export class IncomeSourcePage{
     this.databaseProvider.getDatabaseState().subscribe(ready => {
       if (ready) {
         this.loadIncomeSources();
+        this.getBackground();
       }
     });
   }
@@ -50,7 +51,13 @@ export class IncomeSourcePage{
   } 
 
   getBackground(){
-    return this.settingsService.isAltBackground() ? 'bgListAlternative' : 'bgIncomeList';
+    this.settingsService.isAltBackground().then(data => {
+      if(data){
+        this.bgColor = 'bgListAlternative';
+      }else{
+        this.bgColor = 'bgIncomeList';
+      }
+    })
   }
 
 }

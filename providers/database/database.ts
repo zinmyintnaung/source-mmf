@@ -48,7 +48,8 @@ export class DatabaseProvider {
               'CREATE TABLE IF NOT EXISTS paymentoption(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, created	TEXT NOT NULL, deletestatus INTEGER DEFAULT 0);' +
               'CREATE TABLE IF NOT EXISTS mytransaction(id INTEGER PRIMARY KEY AUTOINCREMENT, tdate TEXT NOT NULL, ttype TEXT NOT NULL, amount REAL NOT NULL, description TEXT DEFAULT NULL, incomesource_id INTEGER DEFAULT NULL, expensetype_id INTEGER DEFAULT NULL, paymentoption_id	INTEGER DEFAULT NULL, created	TEXT NOT NULL, deletestatus INTEGER DEFAULT 0);' +
               'CREATE TABLE IF NOT EXISTS fixedtransaction(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT, created	TEXT NOT NULL, deletestatus INTEGER DEFAULT 0);' +
-              'CREATE TABLE IF NOT EXISTS fixedtransactiondetail(id INTEGER PRIMARY KEY AUTOINCREMENT, fixedtransaction_id INTEGER NOT NULL, ttype TEXT NOT NULL, amount REAL NOT NULL, incomesource_id INTEGER DEFAULT NULL, expensetype_id INTEGER DEFAULT NULL, paymentoption_id INTEGER DEFAULT NULL, deletestatus INTEGER DEFAULT 0);';
+              'CREATE TABLE IF NOT EXISTS fixedtransactiondetail(id INTEGER PRIMARY KEY AUTOINCREMENT, fixedtransaction_id INTEGER NOT NULL, ttype TEXT NOT NULL, amount REAL NOT NULL, incomesource_id INTEGER DEFAULT NULL, expensetype_id INTEGER DEFAULT NULL, paymentoption_id INTEGER DEFAULT NULL, deletestatus INTEGER DEFAULT 0);'+
+              'CREATE TABLE IF NOT EXISTS settings (alternatecolor INTEGER DEFAULT 0);';
     
     this.sqlitePorter.importSqlToDb(this.database, sql)
     .then(data=>{
@@ -67,7 +68,8 @@ export class DatabaseProvider {
               "INSERT INTO expensetype (title, description, created) VALUES ( 'Grocery', 'Buying the necessity', '" + createdTime + "');" +
               "INSERT INTO expensetype (title, description, created) VALUES ( 'Clothing', 'Buying things to wear', '" + createdTime + "');" +
               "INSERT INTO paymentoption (title, description, created) VALUES ( 'Cash', 'Paying cash from wallet', '" + createdTime + "');" +
-              "INSERT INTO paymentoption (title, description, created) VALUES ( 'Credit Card', 'Visa (ABC Bank)', '" + createdTime + "');";
+              "INSERT INTO paymentoption (title, description, created) VALUES ( 'Credit Card', 'Visa (ABC Bank)', '" + createdTime + "');" +
+              "INSERT INTO settings (alternatecolor) VALUES (0);";
 
     this.sqlitePorter.importSqlToDb(this.database, sql)
     .then(data=>{

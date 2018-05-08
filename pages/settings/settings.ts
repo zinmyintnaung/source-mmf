@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Toggle } from 'ionic-angular';
+import { NavController, NavParams, Toggle, AlertController } from 'ionic-angular';
 import { SettingsService } from '../../services/settings';
 
 @Component({
@@ -7,16 +7,24 @@ import { SettingsService } from '../../services/settings';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-
+  isToggled: boolean = false;
+  
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    private settingsService: SettingsService){}
-
+    private settingsService: SettingsService,
+    private alertCtrl: AlertController){}
+  
+  ionViewWillEnter(){
+    this.checkAltBackground();
+  }
+  
   onToggle(toggle: Toggle){
     this.settingsService.setBackground(toggle.checked);
   }
 
   checkAltBackground(){
-    return this.settingsService.isAltBackground();
+    this.settingsService.isAltBackground().then(data => {
+      this.isToggled = data;
+    })
   }
 }

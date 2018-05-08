@@ -12,6 +12,7 @@ import { SettingsService } from '../../services/settings';
 })
 export class ListTransactionsPage {
   public transactions = [];
+  bgColor: any;
   constructor(public navCtrl: NavController, 
     private databaseProvider: DatabaseProvider,
     private transactionService: TransactionService,
@@ -22,6 +23,7 @@ export class ListTransactionsPage {
     this.databaseProvider.getDatabaseState().subscribe(ready => {
       if (ready) {
         this.loadTransactions();
+        this.getBackground();
       }
     });
   }
@@ -41,6 +43,12 @@ export class ListTransactionsPage {
   }
 
   getBackground(){
-    return this.settingsService.isAltBackground() ? 'bgListAlternative' : 'bgTransactionList';
+    this.settingsService.isAltBackground().then(data => {
+      if(data){
+        this.bgColor = 'bgListAlternative';
+      }else{
+        this.bgColor = 'bgTransactionList';
+      }
+    })
   }
 }

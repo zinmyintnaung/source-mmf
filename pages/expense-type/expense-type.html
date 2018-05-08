@@ -20,7 +20,7 @@
   <ion-list>
     <button
       ion-item
-      [color]="getBackground()"
+      color= "{{ bgColor }}"
       *ngFor="let expenseType of expenseTypes;"
       (click)="onLoadExpenseType(expenseType)">
       <h2>{{ expenseType.title }}</h2>

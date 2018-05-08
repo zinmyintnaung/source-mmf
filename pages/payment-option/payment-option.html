@@ -15,12 +15,12 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
- 
+
 <ion-content padding>
   <ion-list>
     <button
       ion-item
-      [color]="getBackground()"
+      color="{{ bgColor }}"
       *ngFor="let paymentOption of paymentOptions;"
       (click)="onLoadPaymentOption(paymentOption)">
       <h2>{{ paymentOption.title }}</h2>

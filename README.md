@@ -1,7 +1,7 @@
 <h3>Source Directory</h3>
 
 <h3>Features</h3>
-<p>To track personal income and expense at your finger tips.</p>
+<p>To track personal income and expense.</p>
 
 <p>Getting your icons & splash screen</p>
 <ul>

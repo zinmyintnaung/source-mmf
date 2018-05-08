@@ -13,6 +13,7 @@ import { SettingsService } from '../../services/settings';
 })
 export class ExpenseTypePage {
   expenseTypes = [];
+  bgColor: any;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -25,6 +26,7 @@ export class ExpenseTypePage {
     this.databaseProvider.getDatabaseState().subscribe(ready => {
       if (ready) {
         this.loadExpenseTypes();
+        this.getBackground();      
       }
     });
   }
@@ -44,6 +46,12 @@ export class ExpenseTypePage {
   }
 
   getBackground(){
-    return this.settingsService.isAltBackground() ? 'bgListAlternative' : 'bgExpenseList';
+    this.settingsService.isAltBackground().then(data => {
+      if(data){
+        this.bgColor = 'bgListAlternative';
+      }else{
+        this.bgColor = 'bgExpenseList';
+      }
+    })
   }
 }
