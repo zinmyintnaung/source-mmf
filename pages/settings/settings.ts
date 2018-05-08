@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Toggle, AlertController } from 'ionic-angular';
+import { NavController, NavParams, Toggle } from 'ionic-angular';
 import { SettingsService } from '../../services/settings';
 
 @Component({
@@ -12,7 +12,7 @@ export class SettingsPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private settingsService: SettingsService,
-    private alertCtrl: AlertController){}
+    ){}
   
   ionViewWillEnter(){
     this.checkAltBackground();

@@ -20,7 +20,7 @@
   <ion-list>
     <button
       ion-item
-      color="{{ bgColor }}"
+      color="{{bgColor}}"
       *ngFor="let paymentOption of paymentOptions;"
       (click)="onLoadPaymentOption(paymentOption)">
       <h2>{{ paymentOption.title }}</h2>
