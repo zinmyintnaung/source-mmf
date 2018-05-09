@@ -20,7 +20,7 @@
   <ion-list>
     <button
       ion-item
-      color="{{bgColor}}"
+      [color]="transaction.ttype=='income' ? 'bgIncomeList' : 'bgExpenseList'"
       *ngFor="let transaction of transactions;"
       (click)="onLoadTransaction(transaction)">
       

@@ -17,27 +17,27 @@
     
     <ion-row>
       <ion-col>Type</ion-col>
-      <ion-col>{{transaction.ttype}}</ion-col>
+      <ion-col><span class="capitalize">{{transaction.ttype}}</span></ion-col>
     </ion-row>
     <ion-row>
       <ion-col>Description</ion-col>
       <ion-col>{{transaction.description}}</ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row [hidden]="transaction.ttype == 'expense' ? true : false">
       <ion-col>Source</ion-col>
       <ion-col>{{transaction.inc_title}}</ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row [hidden]="transaction.ttype == 'income' ? true : false">
       <ion-col>Expense Type</ion-col>
       <ion-col>{{transaction.exp_title}}</ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row [hidden]="transaction.ttype == 'income' ? true : false">
       <ion-col>Paid By</ion-col>
       <ion-col>{{transaction.po_title}}</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>Created On</ion-col>
-      <ion-col>{{transaction.created}}</ion-col>
+      <ion-col>{{ transaction.created | date:"dd/MMM/yyyy 'at' h:mma" }}</ion-col>
     </ion-row>
     <ion-row>
       <ion-col>

@@ -12,18 +12,19 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
+  <h2 text-center>Balance of the Month</h2>
+  <ion-grid ion-item color="bgTransactionList">
     <ion-row>
-      <ion-col col-6 offset-3 text-center><h2>Income: {{ incomeTotal }}</h2></ion-col>
+      <ion-col text-center>Income: {{ incomeTotal }}</ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-6 offset-3 text-center><h2>Expense: {{ expenseTotal }}</h2></ion-col>
+      <ion-col text-center>Expense: {{ expenseTotal }}</ion-col>
     </ion-row>
     <ion-row *ngIf="isNegative()">
-      <ion-col col-6 offset-3 text-center><h2 style="color:#dd2323">Balance: {{ incomeTotal - expenseTotal }}</h2></ion-col>
+      <ion-col text-center><span style="color:#dd2323">Balance: {{ incomeTotal - expenseTotal }}</span></ion-col>
     </ion-row>
     <ion-row *ngIf="!isNegative()">
-      <ion-col col-6 offset-3 text-center><h2 style="color:#0004ff">Balance: {{ incomeTotal - expenseTotal }}</h2></ion-col>
+      <ion-col text-center><span style="color:#0004ff">Balance: {{ incomeTotal - expenseTotal }}</span></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
