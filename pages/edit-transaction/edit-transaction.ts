@@ -54,14 +54,12 @@ export class EditTransactionPage implements OnInit{
     if (this.mode == 'Edit') {
       //edit mode
       this.aTransaction = this.navParams.get('transaction');
-      
-    }
-    
-    if(this.aTransaction.ttype == 'income'){
-      this.isExpense = false;
-    }
-    if(this.aTransaction.ttype == 'expense'){
-      this.isExpense = true;
+      if(this.aTransaction.ttype == 'income'){
+        this.isExpense = false;
+      }
+      if(this.aTransaction.ttype == 'expense'){
+        this.isExpense = true;
+      }
     }
     this.initializeForm();
   }  
